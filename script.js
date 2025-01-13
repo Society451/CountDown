@@ -16,10 +16,30 @@ function updateCountdown() {
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
     const milliseconds = distance % 1000;
 
+    const countdownValue = `${days} Days ${hours} Hours ${minutes} Minutes ${seconds}.${milliseconds.toString().padStart(3, '0')} Seconds`;
+
     document.getElementById('days').innerText = days;
     document.getElementById('hours').innerText = hours;
     document.getElementById('minutes').innerText = minutes;
     document.getElementById('seconds').innerText = `${seconds}.${milliseconds.toString().padStart(3, '0')}`;
+
+    // Update the countdown value for copying
+    document.getElementById('copyButton').dataset.countdown = countdownValue;
 }
+
+function copyCountdown() {
+    const countdownValue = document.getElementById('copyButton').dataset.countdown;
+    navigator.clipboard.writeText(countdownValue).then(() => {
+        const copyButton = document.getElementById('copyButton');
+        copyButton.innerText = 'Copied!';
+        setTimeout(() => {
+            copyButton.innerText = 'Copy Countdown';
+        }, 2000); // Revert back after 2 seconds
+    }).catch(err => {
+        console.error('Failed to copy countdown: ', err);
+    });
+}
+
+document.getElementById('copyButton').addEventListener('click', copyCountdown);
 
 setInterval(updateCountdown, 1);
