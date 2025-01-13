@@ -12,6 +12,7 @@ body {
 #countdown {
     display: flex;
     gap: 20px;
+    align-items: center; /* Ensure button aligns vertically with countdown */
 }
 
 .time-segment {
@@ -21,4 +22,18 @@ body {
 .time-segment span:first-child {
     font-size: 2em;
     display: block;
+}
+
+#copyButton {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #61dafb;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#copyButton:hover {
+    background-color: #21a1f1;
 }
