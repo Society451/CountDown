@@ -1,0 +1,24 @@
+body {
+    /* ...existing code... */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #282c34;
+    color: #61dafb;
+    font-family: Arial, sans-serif;
+}
+
+#countdown {
+    display: flex;
+    gap: 20px;
+}
+
+.time-segment {
+    text-align: center;
+}
+
+.time-segment span:first-child {
+    font-size: 2em;
+    display: block;
+}
